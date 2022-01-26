@@ -16,4 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
         header($_SERVER["SERVER_PROTOCOL"] . " 400 Cette acteur n'existe pas", true, 400);
         exit;
     }
+}else{
+    header($_SERVER["SERVER_PROTOCOL"] . " 405 Method Not Allowed", true, 405);
+    exit;
 }

@@ -11,4 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
     $json_text = json_encode($data);
     echo $json_text;
+}else{
+    header($_SERVER["SERVER_PROTOCOL"] . " 405 Method Not Allowed", true, 405);
+    exit;
 }
