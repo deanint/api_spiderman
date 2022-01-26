@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client de l'API</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div style="text-align: center;">
+        <h2>Créer un nouveau personnage ici =></h2>
+        <button class="btn_create" onclick="toggleModal('add')">ajouter</button>
+    </div>
+
+    <div class="modal item_add">
+        <div class="modal-content">
+            <button class="close-button" onclick="toggleModal('add')">x</button>
+            <div>
+                Name: <input type="text" class="formulaire" id="name_input"> acteur: <input type="text" class="formulaire" id="acteur_input"> Url-image: <input type="text" class="formulaire" id="img_input"> Amis :<select name="friend" class="formulaire"
+                    id="friend-select">
+                                                        <option value="TRUE">Oui</option>
+                                                        <option value="FALSE">Non</option>
+                                                </select>
+                <button class="btn_edit" onclick="send_perso()">créer</button>
+            </div>
+        </div>
+    </div>
+    <h1>listes des personnages des films Spidermans</h1>
+    <div id="content"></div>
+</body>
+
+</html>
