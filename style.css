@@ -217,7 +217,7 @@ p {
 #error {
     position: absolute;
     top: 10%;
-    left: 10%;
+    left: 20%;
     visibility: hidden;
     transform: translate(-50%, -50%);
     background-color: firebrick;

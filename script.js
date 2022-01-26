@@ -71,8 +71,9 @@ async function send_perso() {
         },
         body: JSON.stringify(personnages)
     });
+
     if (response.status !== 200) {
-        contentElement.innerHTML = `${response.statusText}`
+        contentElement.innerHTML = `une erreur ${response.status} est présente vérifier vos données ${response.statusText} `
         contentElement.style.visibility = 'visible';
         setTimeout(clearError, 4000);
     }
@@ -89,7 +90,7 @@ async function delete_perso(key) {
         body: JSON.stringify(key)
     });
     if (response.status !== 200) {
-        contentElement.innerHTML = `${response.statusText}`
+        contentElement.innerHTML = `une erreur ${response.status} est présente vérifier vos données ${response.statusText} `
         contentElement.style.visibility = 'visible';
         setTimeout(clearError, 4000);
     }
@@ -118,7 +119,7 @@ async function edit_perso(key) {
         body: JSON.stringify(personnages, key)
     });
     if (response.status !== 200) {
-        contentElement.innerHTML = `${response.statusText}`
+        contentElement.innerHTML = `une erreur ${response.status} est présente vérifier vos données ${response.statusText} `
         contentElement.style.visibility = 'visible';
         setTimeout(clearError, 4000);
     }
