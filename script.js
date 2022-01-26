@@ -52,6 +52,7 @@ async function load_data() {
 }
 
 async function send_perso() {
+    const contentElement = document.getElementById("error");
     const name = document.getElementById("name_input").value;
     const friend = document.getElementById("friend-select").value;
     const urlPhoto = document.getElementById("img_input").value;
@@ -63,29 +64,40 @@ async function send_perso() {
         "amis": friend
     };
 
-    await fetch("Api/add.php", {
+    const response = await fetch("Api/add.php", {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(personnages)
     });
+    if (response.status !== 200) {
+        contentElement.innerHTML = `${response.statusText}`
+        contentElement.style.visibility = 'visible';
+        setTimeout(clearError, 4000);
+    }
     await load_data();
 }
 
 async function delete_perso(key) {
-    await fetch("Api/delete.php", {
+    const contentElement = document.getElementById("error");
+    const response = await fetch("Api/delete.php", {
         method: "DELETE",
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(key)
     });
-
+    if (response.status !== 200) {
+        contentElement.innerHTML = `${response.statusText}`
+        contentElement.style.visibility = 'visible';
+        setTimeout(clearError, 4000);
+    }
     await load_data();
 }
 
 async function edit_perso(key) {
+    const contentElement = document.getElementById("error");
     const name = document.getElementById(`name_input_edit_${key}`).value;
     const friend = document.getElementById(`friend-select_edit_${key}`).value;
     const urlPhoto = document.getElementById(`img_input_edit_${key}`).value;
@@ -98,17 +110,25 @@ async function edit_perso(key) {
         "key": key
     };
     // envoi du champion en POST
-    await fetch("Api/edit.php", {
+    const response = await fetch("Api/edit.php", {
         method: "PUT",
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(personnages, key)
     });
+    if (response.status !== 200) {
+        contentElement.innerHTML = `${response.statusText}`
+        contentElement.style.visibility = 'visible';
+        setTimeout(clearError, 4000);
+    }
     await load_data();
 }
 
-
+function clearError() {
+    const contentElement = document.getElementById("error");
+    contentElement.style.visibility = 'hidden';
+}
 
 function toggleModal(key) {
     const modal = document.querySelector(`.item_${key}`);

@@ -8,10 +8,20 @@ h5 {
     margin: 0;
     font-size: 1.4em;
     font-weight: 700;
+    color: white;
+}
+
+h1 {
+    color: white;
+}
+
+h2 {
+    color: white;
 }
 
 p {
-    font-size: 12px;
+    font-size: 15px;
+    color: white;
 }
 
 .center {
@@ -102,6 +112,7 @@ p {
 }
 
 .btn_edit {
+    color: white;
     width: 6em;
     height: 30px;
     border: 2px solid #000;
@@ -118,6 +129,7 @@ p {
 }
 
 .btn_delete {
+    color: white;
     width: 6em;
     height: 30px;
     border: 2px solid #000;
@@ -195,8 +207,20 @@ p {
     position: relative;
     display: inline-block;
     cursor: pointer;
+    color: white;
 }
 
 .btn_create:hover {
     background: #b82020;
+}
+
+#error {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    visibility: hidden;
+    transform: translate(-50%, -50%);
+    background-color: firebrick;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
 }
