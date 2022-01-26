@@ -11,9 +11,12 @@ async function load_data() {
     for (const perso of personnages) {
         if (perso.amis === "TRUE") {
             perso.descriptions = "est un ami de Peter Parker "
+            perso.selectValue = "  <option  selected value=TRUE>Oui</option> <option value=FALSE>Non</option> "
         } else {
             perso.descriptions = "est un ennemi de Peter Parker "
+            perso.selectValue = "<option value=TRUE>Oui</option> <option  selected value=FALSE>Non</option> "
         }
+
 
         contentElement.innerHTML += `
         <div class="center">
@@ -34,8 +37,7 @@ async function load_data() {
                                     acteur: <input type="text"  class="formulaire" id="acteur_input_edit_${i}" value="${perso.acteur}">
                                     Url-image: <input type="text"  class="formulaire" id="img_input_edit_${i}" value="${perso.imageSrc}">
                                     Amis :<select name="friend"  class="formulaire" id="friend-select_edit_${i}" >
-                                                        <option value="TRUE">Oui</option>
-                                                        <option value="FALSE">Non</option>
+                                                       ${perso.selectValue}
                                                 </select>
                                   <button class="btn_edit"  onclick="edit_perso(${i})">edit</button> 
                                 </div>

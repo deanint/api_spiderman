@@ -18,15 +18,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
         header($_SERVER["SERVER_PROTOCOL"] . " 409 Cette acteur existe deja", true, 409);
         exit;
     }
-    if(array_key_exists($key, $spiderman)){
-        $spiderman[$key][ "name"] = $data['name'];
-        $spiderman[$key][ "acteur"]= $data['acteur'];
-        $spiderman[$key][ "imageSrc"] = $data['imageSrc'];
-        $spiderman[$key][ "amis"]= $data['amis'];
-
-        file_put_contents($file_name, json_encode($spiderman));
+    if(array_key_exists($key, $spiderman) && $data['name'] && $data['acteur'] &&  $data['imageSrc'] && $data['amis']){
+            $spiderman[$key][ "name"] = $data['name'];
+            $spiderman[$key][ "acteur"]= $data['acteur'];
+            $spiderman[$key][ "imageSrc"] = $data['imageSrc'];
+            $spiderman[$key][ "amis"]= $data['amis'];
+            file_put_contents($file_name, json_encode($spiderman));
     }else{
-        header($_SERVER["SERVER_PROTOCOL"] . " 400 Cette acteur existe deja", true, 400);
+        header($_SERVER["SERVER_PROTOCOL"] . " 400 Les informations ne sont pas bonnes", true, 400);
         exit;
     }
 
